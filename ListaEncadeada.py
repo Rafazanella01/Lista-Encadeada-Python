@@ -4,15 +4,15 @@ class ListaEncadeada:
     def __init__(self):
         self.primeiro = None
 
-    def inserirInicio(self, valor):
+    def inserirInicio(self, valor): # Método Implementado na aula
         novo = No(valor)
         novo.proximo = self.primeiro
         self.primeiro = novo
 
-    def listaVazia(self):
+    def listaVazia(self): # Método Implementado na aula
         return self.primeiro is None
 
-    def mostrarLista(self):
+    def mostrarLista(self): # Método Implementado na aula
         if self.listaVazia():
             print('A lista está vazia')
             return None
