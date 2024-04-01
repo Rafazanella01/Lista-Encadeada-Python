@@ -25,7 +25,7 @@ class ListaEncadeada:
             return None
         atual = self.primeiro
         while atual is not None:
-            atual.mostrar_no()
+            atual.valor.mostrar_detalhes()
             atual = atual.proximo
         print("")
 
@@ -63,10 +63,10 @@ class ListaEncadeada:
         atual = self.primeiro
         while atual is not None:
             if atual.valor == valor:
-                print(f"Valor {valor} encontrado na lista")
+                print("Valor encontrado na lista")
                 return atual
             atual = atual.proximo
-        print(f"valor {valor} não está na lista")
+        print("valor não está na lista")
         return None
 
     def ordenar(self):
@@ -77,33 +77,48 @@ class ListaEncadeada:
             trocado = False
             atual = self.primeiro
             while atual.proximo is not None:
-                if atual.valor > atual.proximo.valor:
+                if atual.valor.ano > atual.proximo.valor.ano:
                     atual.valor, atual.proximo.valor = atual.proximo.valor, atual.valor
                     trocado = True
                 atual = atual.proximo
 
 
+class Carro:
+    def __init__(self, marca, modelo, ano):
+        self.marca = marca
+        self.modelo = modelo
+        self.ano = ano
+
+    def mostrar_detalhes(self):
+        print(f"Marca: {self.marca}, Modelo: {self.modelo}, Ano: {self.ano}")
+
+    def adicionar_a_lista(self, lista):
+        lista.inserir_inicio(self)
+
+    def remover_da_lista(self, lista):
+        lista.excluir_valor(self)
+
+    def pesquisar_na_lista(self, lista):
+        lista.pesquisar(self)
+
+    def ordenar_lista(self, lista):
+        lista.ordenar()
+
+
+carro1 = Carro("Toyota", "Corolla", 2020)
+carro2 = Carro("Honda", "Civic", 2019)
+carro3 = Carro("Ford", "Fusion", 2018)
+
 lista = ListaEncadeada()
 
-for i in range(10):
-    lista.inserir_inicio(i)
+carro1.adicionar_a_lista(lista)
+carro2.adicionar_a_lista(lista)
+carro3.adicionar_a_lista(lista)
 
-# inserir no fim
-lista.inserir_fim(10)
+carro1.remover_da_lista(lista)
 
-# Excluindo valores
-lista.excluir_valor(1)
-lista.excluir_valor(2)
-lista.excluir_valor(3)
-lista.excluir_valor(0)
-lista.excluir_valor(10)
+carro3.pesquisar_na_lista(lista)
 
-
-# Pesquisando um valor
-lista.pesquisar(10)
-
-# Ordenando a lista
 lista.ordenar()
 
-# Mostrando a lista
 lista.mostrar_lista()
