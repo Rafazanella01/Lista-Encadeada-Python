@@ -20,7 +20,6 @@ class ListaEncadeada:
         while atual is not None:
             atual.valor.mostrarDetalhes()
             atual = atual.proximo
-        print("")
 
     def inserirFim(self, valor):
         novo = No(valor)
