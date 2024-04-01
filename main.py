@@ -11,27 +11,27 @@ class ListaEncadeada:
     def __init__(self):
         self.primeiro = None
 
-    def inserir_inicio(self, valor):
+    def inserirInicio(self, valor):
         novo = No(valor)
         novo.proximo = self.primeiro
         self.primeiro = novo
 
-    def lista_vazia(self):
+    def listaVazia(self):
         return self.primeiro is None
 
-    def mostrar_lista(self):
-        if self.lista_vazia():
+    def mostrarLista(self):
+        if self.listaVazia():
             print('A lista está vazia')
             return None
         atual = self.primeiro
         while atual is not None:
-            atual.valor.mostrar_detalhes()
+            atual.valor.mostrarDetalhes()
             atual = atual.proximo
         print("")
 
-    def inserir_fim(self, valor):
+    def inserirFim(self, valor):
         novo = No(valor)
-        if self.lista_vazia():
+        if self.listaVazia():
             self.primeiro = novo
             return
         atual = self.primeiro
@@ -39,8 +39,8 @@ class ListaEncadeada:
             atual = atual.proximo
         atual.proximo = novo
 
-    def excluir_valor(self, valor):
-        if self.lista_vazia():
+    def excluirValor(self, valor):
+        if self.listaVazia():
             print("A lista está vazia")
             return None
         if self.primeiro.valor == valor:
@@ -57,7 +57,7 @@ class ListaEncadeada:
         print("Este valor não está na lista")
 
     def pesquisar(self, valor):
-        if self.lista_vazia():
+        if self.listaVazia():
             print("A lista está vazia")
             return None
         atual = self.primeiro
@@ -70,7 +70,7 @@ class ListaEncadeada:
         return None
 
     def ordenar(self):
-        if self.lista_vazia():
+        if self.listaVazia():
             return
         trocado = True
         while trocado:
@@ -89,19 +89,19 @@ class Carro:
         self.modelo = modelo
         self.ano = ano
 
-    def mostrar_detalhes(self):
+    def mostrarDetalhes(self):
         print(f"Marca: {self.marca}, Modelo: {self.modelo}, Ano: {self.ano}")
 
-    def adicionar_a_lista(self, lista):
-        lista.inserir_inicio(self)
+    def adicionarNaLista(self, lista):
+        lista.inserirInicio(self)
 
-    def remover_da_lista(self, lista):
-        lista.excluir_valor(self)
+    def removerDaLista(self, lista):
+        lista.excluirValor(self)
 
-    def pesquisar_na_lista(self, lista):
+    def pesquisarNaLista(self, lista):
         lista.pesquisar(self)
 
-    def ordenar_lista(self, lista):
+    def ordenarLista(self, lista):
         lista.ordenar()
 
 
@@ -111,14 +111,14 @@ carro3 = Carro("Ford", "Fusion", 2018)
 
 lista = ListaEncadeada()
 
-carro1.adicionar_a_lista(lista)
-carro2.adicionar_a_lista(lista)
-carro3.adicionar_a_lista(lista)
+carro1.adicionarNaLista(lista)
+carro2.adicionarNaLista(lista)
+carro3.adicionarNaLista(lista)
 
-carro1.remover_da_lista(lista)
+carro1.removerDaLista(lista)
 
-carro3.pesquisar_na_lista(lista)
+carro3.pesquisarNaLista(lista)
 
 lista.ordenar()
 
-lista.mostrar_lista()
+lista.mostrarLista()
