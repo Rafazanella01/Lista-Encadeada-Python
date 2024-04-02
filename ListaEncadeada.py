@@ -62,31 +62,14 @@ class ListaEncadeada:
         return None
 
     def ordenar(self):
-        if self.lista_vazia():
-         print("A lista está vazia!")
-         return None                        # Nada a ordenar
-
-        troca = True                          #a variavel troca serve para testar todos números da lista, quando nao tiver mais nenhum item para trocar ele para o loop
-        while troca:
-         troca = False
-         anterior = None                     #inicializa uma variavel anterior
-         atual = self.primeiro               #atual é definido como primeiro da lista
-
-        while atual.proximo is not None:    #enquando tiver itens na lista
-            proximo = atual.proximo           #inicializa a variavel proximo
-
-            if atual.valor.ano > proximo.valor.ano:   #testa se o valor do 1º é maior que o 2º
-                troca = True
-
-            if anterior:                    #testa se já há algum item na variavel anterior
-                anterior.proximo = proximo
-
-            else:
-                self.primeiro = proximo      #caso nao tenha um anterior, quer dizer que é o primeiro item a ser testado, logo é o primeiro da lista
-            atual.proximo = proximo.proximo #atual aponta para o nó que o proximo está apontando
-            proximo.proximo = atual         #proximo aponta para o nó que está como atual
-            anterior = proximo              #o nó que está como proximo é atribuido a variavel anterior
-
-        else:
-             anterior = atual
-             atual = atual.proximo
+        if self.listaVazia():
+            return
+        trocado = True
+        while trocado:
+            trocado = False
+            atual = self.primeiro
+            while atual.proximo is not None:
+                if atual.valor.ano > atual.proximo.valor.ano:
+                    atual.valor, atual.proximo.valor = atual.proximo.valor, atual.valor
+                    trocado = True
+                atual = atual.proximo
